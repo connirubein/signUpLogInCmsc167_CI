@@ -6,7 +6,7 @@ notifications:  #Optional
     email:
         recipients:
             - cnbaliog@up.edu.ph
-            - kdraganas@up.edu.ph
+            #- kdraganas@up.edu.ph
     on_success: always
     on_failure: always
 
