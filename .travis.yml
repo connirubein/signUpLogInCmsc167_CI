@@ -49,6 +49,7 @@ before_script:
     - android list targets
     - echo no | android create avd --force -n test -t "android-28" --abi $ANDROID_ABI --tag $ANDROID_TAG #echo no | android create avd --force --name test --target $ANDROID_TARGET --abi $ANDROID_ABI    #Create AVD for given api
     - emulator -avd test -no-skin -no-audio -no-window &    #Start emulator
+    - android-wait-for-emulator
 
 script:
     - echo "Travis branch is $TRAVIS_BRANCH"
