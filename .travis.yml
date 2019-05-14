@@ -4,8 +4,7 @@ sudo: false
 
 notifications:  #Optional
     email:
-        recipients:
-            - cnbaliog@up.edu.ph
+        - cnbaliog@up.edu.ph
     on_success: always
     on_failure: always
 
