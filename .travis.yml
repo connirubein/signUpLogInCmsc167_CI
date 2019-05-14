@@ -4,7 +4,11 @@ sudo: false
 
 notifications:  #Optional
     email:
-        - cnbaliog@up.edu.ph #Add your email address
+        recipients:
+            - cnbaliog@up.edu.ph
+            - kdraganas@up.edu.ph
+    on_success: always
+    on_failure: always
 
 env:
     matrix:
@@ -27,7 +31,7 @@ android:
         - platform-tools
         - tools
         - build-tools-25.0.0
-        - android-25
+        - android-28
 
         # Additional components
         - extra-google-google_play_services
@@ -60,6 +64,7 @@ before_install:
     - pip install --user codecov    #Install codecov
 
 after_success:
-    - codecov                       #Run codecov
+    - bash <(curl -s https://codecov.io/bash)
+    - echo "All Tests Passed"
 
 after_failure: "cat $TRAVIS_BUILD_DIR/app/build/outputs/lint-results-debug.xml"
