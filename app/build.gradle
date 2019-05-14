@@ -1,0 +1,92 @@
+apply plugin: 'com.android.application'
+apply from: '../jacoco.gradle'
+android {
+    compileSdkVersion 28
+    flavorDimensions "blue", "red"
+    defaultConfig {
+        applicationId "com.connirubein.signuplogincmsc167"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        //testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+//    testOptions {
+//        execution 'ANDROIDX_TEST_ORCHESTRATOR'
+//    }
+    buildTypes {
+        debug {
+            testCoverageEnabled = true
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    productFlavors {
+        blue {
+            dimension "blue"
+        }
+
+        full{
+            dimension "red"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+//
+//buildscript {
+//    repositories {
+//        jcenter()
+//    }
+//}
+
+//apply plugin: 'jacoco'
+//
+//ext {
+//    jacocoVersion = '0.7.5.201505241946'
+//}
+
+//repositories {
+//    jcenter()
+//}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+
+    //testing
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation "com.android.support.test:rules:1.0.2"
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+//    classpath 'com.dicedmelon.gradle:jacoco-android:0.1.4'
+    //androidTestImplementation 'androidx.test:rules:1.1.1'
+    //androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    //androidTestImplementation 'androidx.test:runner:1.1.1'
+    //androidTestImplementation 'androidx.test.ext:junit:1.1.0'
+
+    //implementation 'org.jacoco:org.jacoco.core:0.8.4'
+}
+
+//jacoco {
+//    toolVersion = jacocoVersion
+//}
+
+//jacocoTestReport {
+//    reports {
+//        html.enabled = true
+//        xml.enabled = true
+//        csv.enabled = true
+//    }
+//}
+//test.finalizedBy jacocoTestReport
